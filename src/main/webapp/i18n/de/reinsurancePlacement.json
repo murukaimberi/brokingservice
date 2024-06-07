@@ -1,0 +1,32 @@
+{
+  "brokingserviceApp": {
+    "reinsurancePlacement": {
+      "home": {
+        "title": "Reinsurance Placements",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Reinsurance Placement erstellen",
+        "createOrEditLabel": "Reinsurance Placement erstellen oder bearbeiten",
+        "notFound": "Keine Reinsurance Placements gefunden"
+      },
+      "created": "Reinsurance Placement erstellt mit ID {{ param }}",
+      "updated": "Reinsurance Placement aktualisiert mit ID {{ param }}",
+      "deleted": "Reinsurance Placement gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Reinsurance Placement {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Reinsurance Placement"
+      },
+      "id": "ID",
+      "riPercentageCommission": "Ri Percentage Commission",
+      "riPercentageShare": "Ri Percentage Share",
+      "riTotalSumInsured": "Ri Total Sum Insured",
+      "riLimitOfLiability": "Ri Limit Of Liability",
+      "grossPremiumHundred": "Gross Premium Hundred",
+      "riPremium": "Ri Premium",
+      "riCommission": "Ri Commission",
+      "netDueFromInsurer": "Net Due From Insurer",
+      "contract": "Contract"
+    }
+  }
+}

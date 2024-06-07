@@ -1,0 +1,25 @@
+{
+  "brokingserviceApp": {
+    "contractReport": {
+      "home": {
+        "title": "ContractReports",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Contract Report",
+        "createOrEditLabel": "Créer ou éditer un Contract Report",
+        "notFound": "Aucun Contract Report trouvé"
+      },
+      "created": "Un nouveau Contract Report a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Contract Report avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Contract Report avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Contract Report {{ id }} ?"
+      },
+      "detail": {
+        "title": "Contract Report"
+      },
+      "id": "ID",
+      "contractDocument": "Contract Document",
+      "createdDate": "Created Date"
+    }
+  }
+}

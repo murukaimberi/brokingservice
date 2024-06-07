@@ -1,0 +1,163 @@
+<div>
+  <h2 id="page-heading" data-cy="ContractHistoryHeading">
+    <span jhiTranslate="brokingserviceApp.contractHistory.home.title">Contract Histories</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="brokingserviceApp.contractHistory.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-contract-history"
+        [routerLink]="['/contract-history/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="brokingserviceApp.contractHistory.home.createLabel">Create a new Contract History</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (contractHistories?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="brokingserviceApp.contractHistory.home.notFound">No Contract Histories found</span>
+    </div>
+  }
+
+  @if (contractHistories && contractHistories.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contractCreatedDate">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.contractCreatedDate">Contract Created Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contractActiveDate">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.contractActiveDate">Contract Active Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contractInActiveDate">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.contractInActiveDate">Contract In Active Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contractLastModifiedDate">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.contractLastModifiedDate">Contract Last Modified Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="changeDescription">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.changeDescription">Change Description</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="updated.login">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.updated">Updated</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="approved.login">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.contractHistory.approved">Approved</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (contractHistory of contractHistories; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/contract-history', contractHistory.id, 'view']">{{ contractHistory.id }}</a>
+              </td>
+              <td>{{ contractHistory.contractCreatedDate | formatMediumDatetime }}</td>
+              <td>{{ contractHistory.contractActiveDate | formatMediumDatetime }}</td>
+              <td>{{ contractHistory.contractInActiveDate | formatMediumDatetime }}</td>
+              <td>{{ contractHistory.contractLastModifiedDate | formatMediumDatetime }}</td>
+              <td>{{ contractHistory.changeDescription }}</td>
+              <td>
+                {{ contractHistory.updated?.login }}
+              </td>
+              <td>
+                {{ contractHistory.approved?.login }}
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/contract-history', contractHistory.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/contract-history', contractHistory.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(contractHistory)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (contractHistories && contractHistories.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,25 @@
+{
+  "brokingserviceApp": {
+    "insuranceType": {
+      "home": {
+        "title": "Insurance Types",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Insurance Type erstellen",
+        "createOrEditLabel": "Insurance Type erstellen oder bearbeiten",
+        "notFound": "Keine Insurance Types gefunden"
+      },
+      "created": "Insurance Type erstellt mit ID {{ param }}",
+      "updated": "Insurance Type aktualisiert mit ID {{ param }}",
+      "deleted": "Insurance Type gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Insurance Type {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Insurance Type"
+      },
+      "id": "ID",
+      "name": "Name",
+      "classOfBusinesses": "Class Of Businesses"
+    }
+  }
+}

@@ -1,0 +1,243 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-reinsurance-placement-heading"
+        data-cy="ReinsurancePlacementCreateUpdateHeading"
+        jhiTranslate="brokingserviceApp.reinsurancePlacement.home.createOrEditLabel"
+      >
+        Create or edit a Reinsurance Placement
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="brokingserviceApp.reinsurancePlacement.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_riPercentageCommission"
+            jhiTranslate="brokingserviceApp.reinsurancePlacement.riPercentageCommission"
+            >Ri Percentage Commission</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="riPercentageCommission"
+            id="field_riPercentageCommission"
+            data-cy="riPercentageCommission"
+            formControlName="riPercentageCommission"
+          />
+          @if (
+            editForm.get('riPercentageCommission')!.invalid &&
+            (editForm.get('riPercentageCommission')!.dirty || editForm.get('riPercentageCommission')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('riPercentageCommission')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('riPercentageCommission')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '0' }"
+                  >This field should be at least 0.</small
+                >
+              }
+              @if (editForm.get('riPercentageCommission')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '100' }"
+                  >This field cannot be more than 100.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('riPercentageCommission')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_riPercentageShare" jhiTranslate="brokingserviceApp.reinsurancePlacement.riPercentageShare"
+            >Ri Percentage Share</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="riPercentageShare"
+            id="field_riPercentageShare"
+            data-cy="riPercentageShare"
+            formControlName="riPercentageShare"
+          />
+          @if (
+            editForm.get('riPercentageShare')!.invalid &&
+            (editForm.get('riPercentageShare')!.dirty || editForm.get('riPercentageShare')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('riPercentageShare')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              @if (editForm.get('riPercentageShare')?.errors?.min) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.min" [translateValues]="{ min: '0' }"
+                  >This field should be at least 0.</small
+                >
+              }
+              @if (editForm.get('riPercentageShare')?.errors?.max) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.max" [translateValues]="{ max: '100' }"
+                  >This field cannot be more than 100.</small
+                >
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('riPercentageShare')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_riTotalSumInsured" jhiTranslate="brokingserviceApp.reinsurancePlacement.riTotalSumInsured"
+            >Ri Total Sum Insured</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="riTotalSumInsured"
+            id="field_riTotalSumInsured"
+            data-cy="riTotalSumInsured"
+            formControlName="riTotalSumInsured"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_riLimitOfLiability" jhiTranslate="brokingserviceApp.reinsurancePlacement.riLimitOfLiability"
+            >Ri Limit Of Liability</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="riLimitOfLiability"
+            id="field_riLimitOfLiability"
+            data-cy="riLimitOfLiability"
+            formControlName="riLimitOfLiability"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_grossPremiumHundred"
+            jhiTranslate="brokingserviceApp.reinsurancePlacement.grossPremiumHundred"
+            >Gross Premium Hundred</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="grossPremiumHundred"
+            id="field_grossPremiumHundred"
+            data-cy="grossPremiumHundred"
+            formControlName="grossPremiumHundred"
+          />
+          @if (
+            editForm.get('grossPremiumHundred')!.invalid &&
+            (editForm.get('grossPremiumHundred')!.dirty || editForm.get('grossPremiumHundred')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('grossPremiumHundred')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('grossPremiumHundred')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_riPremium" jhiTranslate="brokingserviceApp.reinsurancePlacement.riPremium">Ri Premium</label>
+          <input type="number" class="form-control" name="riPremium" id="field_riPremium" data-cy="riPremium" formControlName="riPremium" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_riCommission" jhiTranslate="brokingserviceApp.reinsurancePlacement.riCommission"
+            >Ri Commission</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="riCommission"
+            id="field_riCommission"
+            data-cy="riCommission"
+            formControlName="riCommission"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_netDueFromInsurer" jhiTranslate="brokingserviceApp.reinsurancePlacement.netDueFromInsurer"
+            >Net Due From Insurer</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="netDueFromInsurer"
+            id="field_netDueFromInsurer"
+            data-cy="netDueFromInsurer"
+            formControlName="netDueFromInsurer"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contract" jhiTranslate="brokingserviceApp.reinsurancePlacement.contract">Contract</label>
+          <select
+            class="form-control"
+            id="field_contract"
+            data-cy="contract"
+            name="contract"
+            formControlName="contract"
+            [compareWith]="compareContract"
+          >
+            @if (editForm.get(['contract'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (contractOption of contractsCollection; track $index) {
+              <option [ngValue]="contractOption">{{ contractOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['contract'])!.invalid && (editForm.get(['contract'])!.dirty || editForm.get(['contract'])!.touched)) {
+          <div>
+            @if (editForm.get(['contract'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

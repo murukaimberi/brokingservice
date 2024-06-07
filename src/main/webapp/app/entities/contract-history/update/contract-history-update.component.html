@@ -1,0 +1,209 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-contract-history-heading"
+        data-cy="ContractHistoryCreateUpdateHeading"
+        jhiTranslate="brokingserviceApp.contractHistory.home.createOrEditLabel"
+      >
+        Create or edit a Contract History
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="brokingserviceApp.contractHistory.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contractCreatedDate" jhiTranslate="brokingserviceApp.contractHistory.contractCreatedDate"
+            >Contract Created Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_contractCreatedDate"
+              data-cy="contractCreatedDate"
+              type="datetime-local"
+              class="form-control"
+              name="contractCreatedDate"
+              formControlName="contractCreatedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (
+            editForm.get('contractCreatedDate')!.invalid &&
+            (editForm.get('contractCreatedDate')!.dirty || editForm.get('contractCreatedDate')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('contractCreatedDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('contractCreatedDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contractActiveDate" jhiTranslate="brokingserviceApp.contractHistory.contractActiveDate"
+            >Contract Active Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_contractActiveDate"
+              data-cy="contractActiveDate"
+              type="datetime-local"
+              class="form-control"
+              name="contractActiveDate"
+              formControlName="contractActiveDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (
+            editForm.get('contractActiveDate')!.invalid &&
+            (editForm.get('contractActiveDate')!.dirty || editForm.get('contractActiveDate')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('contractActiveDate')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('contractActiveDate')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contractInActiveDate" jhiTranslate="brokingserviceApp.contractHistory.contractInActiveDate"
+            >Contract In Active Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_contractInActiveDate"
+              data-cy="contractInActiveDate"
+              type="datetime-local"
+              class="form-control"
+              name="contractInActiveDate"
+              formControlName="contractInActiveDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label
+            class="form-label"
+            for="field_contractLastModifiedDate"
+            jhiTranslate="brokingserviceApp.contractHistory.contractLastModifiedDate"
+            >Contract Last Modified Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_contractLastModifiedDate"
+              data-cy="contractLastModifiedDate"
+              type="datetime-local"
+              class="form-control"
+              name="contractLastModifiedDate"
+              formControlName="contractLastModifiedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_changeDescription" jhiTranslate="brokingserviceApp.contractHistory.changeDescription"
+            >Change Description</label
+          >
+          <textarea
+            class="form-control"
+            name="changeDescription"
+            id="field_changeDescription"
+            data-cy="changeDescription"
+            formControlName="changeDescription"
+          ></textarea>
+          @if (
+            editForm.get('changeDescription')!.invalid &&
+            (editForm.get('changeDescription')!.dirty || editForm.get('changeDescription')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('changeDescription')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_updated" jhiTranslate="brokingserviceApp.contractHistory.updated">Updated</label>
+          <select
+            class="form-control"
+            id="field_updated"
+            data-cy="updated"
+            name="updated"
+            formControlName="updated"
+            [compareWith]="compareUser"
+          >
+            @if (!editForm.get('updated')!.value) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.login }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['updated'])!.invalid && (editForm.get(['updated'])!.dirty || editForm.get(['updated'])!.touched)) {
+          <div>
+            @if (editForm.get(['updated'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_approved" jhiTranslate="brokingserviceApp.contractHistory.approved">Approved</label>
+          <select
+            class="form-control"
+            id="field_approved"
+            data-cy="approved"
+            name="approved"
+            formControlName="approved"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            @for (userOption of usersSharedCollection; track $index) {
+              <option [ngValue]="userOption">{{ userOption.login }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

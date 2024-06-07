@@ -1,0 +1,9 @@
+{
+  "brokingserviceApp": {
+    "ContractSubType": {
+      "null": "",
+      "PROPORTIONAL": "PROPORTIONAL",
+      "NON_PROPORTIONAL": "NON_PROPORTIONAL"
+    }
+  }
+}

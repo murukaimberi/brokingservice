@@ -1,0 +1,127 @@
+{
+  "annotations": {
+    "changelogDate": "20240607115810"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "type",
+      "fieldType": "ContractType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "FACULTATIVE,TREATY"
+    },
+    {
+      "fieldName": "subType",
+      "fieldType": "ContractSubType",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "PROPORTIONAL,NON_PROPORTIONAL"
+    },
+    {
+      "fieldName": "inception",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "expiry",
+      "fieldType": "ZonedDateTime",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "currency",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "totalSumInsured",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "limitOfLiability",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "uuid",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["unique"]
+    },
+    {
+      "fieldName": "status",
+      "fieldType": "ContractStatus",
+      "fieldValidateRules": ["required"],
+      "fieldValues": "CREATED,CREATED_PLACEMENT,CREATED_SHARE,CREATED_SHARE_FINALISED,CREATED_APPROVED,UPDATE_CREATED,UPDATE_APPROVED"
+    },
+    {
+      "fieldName": "active",
+      "fieldType": "Boolean"
+    }
+  ],
+  "name": "Contract",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "businessPartner",
+      "otherEntityRelationshipName": "insuredContracts",
+      "relationshipName": "insured",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "businessPartner",
+      "otherEntityRelationshipName": "insurerContracts",
+      "relationshipName": "insurer",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "businessPartner",
+      "otherEntityRelationshipName": "brokerContracts",
+      "relationshipName": "broker",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityName": "businessPartner",
+      "otherEntityRelationshipName": "reInsurerContracts",
+      "relationshipName": "reinsurers",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "classOfBusiness",
+      "otherEntityRelationshipName": "contracts",
+      "relationshipName": "classOfBusiness",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "subClassOfBusiness",
+      "otherEntityRelationshipName": "contracts",
+      "relationshipName": "subClassOfBusiness",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    },
+    {
+      "otherEntityField": "currency",
+      "otherEntityName": "country",
+      "relationshipName": "country",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

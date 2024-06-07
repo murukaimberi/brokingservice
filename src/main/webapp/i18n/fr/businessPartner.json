@@ -1,0 +1,35 @@
+{
+  "brokingserviceApp": {
+    "businessPartner": {
+      "home": {
+        "title": "BusinessPartners",
+        "refreshListLabel": "Actualiser la liste",
+        "createLabel": "Créer un nouveau Business Partner",
+        "createOrEditLabel": "Créer ou éditer un Business Partner",
+        "notFound": "Aucun Business Partner trouvé"
+      },
+      "created": "Un nouveau Business Partner a été créé avec l'identifiant {{ param }}",
+      "updated": "Le Business Partner avec l'identifiant {{ param }} a été mis à jour",
+      "deleted": "Le Business Partner avec l'identifiant {{ param }} a été supprimé",
+      "delete": {
+        "question": "Êtes-vous certain de vouloir supprimer le Business Partner {{ id }} ?"
+      },
+      "detail": {
+        "title": "Business Partner"
+      },
+      "id": "ID",
+      "name": "Name",
+      "description": "Description",
+      "representativeName": "Representative Name",
+      "email": "Email",
+      "phoneNumber": "Phone Number",
+      "agentType": "Agent Type",
+      "awardedBusinessShares": "Awarded Business Shares",
+      "addresses": "Addresses",
+      "insuredContracts": "Insured Contracts",
+      "insurerContracts": "Insurer Contracts",
+      "brokerContracts": "Broker Contracts",
+      "reInsurerContracts": "Re Insurer Contracts"
+    }
+  }
+}

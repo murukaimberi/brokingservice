@@ -1,0 +1,30 @@
+{
+  "brokingserviceApp": {
+    "contractHistory": {
+      "home": {
+        "title": "Contract Histories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Contract History",
+        "createOrEditLabel": "Create or edit a Contract History",
+        "notFound": "No Contract Histories found"
+      },
+      "created": "A new Contract History is created with identifier {{ param }}",
+      "updated": "A Contract History is updated with identifier {{ param }}",
+      "deleted": "A Contract History is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Contract History {{ id }}?"
+      },
+      "detail": {
+        "title": "Contract History"
+      },
+      "id": "ID",
+      "contractCreatedDate": "Contract Created Date",
+      "contractActiveDate": "Contract Active Date",
+      "contractInActiveDate": "Contract In Active Date",
+      "contractLastModifiedDate": "Contract Last Modified Date",
+      "changeDescription": "Change Description",
+      "updated": "Updated",
+      "approved": "Approved"
+    }
+  }
+}

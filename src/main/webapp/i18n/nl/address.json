@@ -1,0 +1,30 @@
+{
+  "brokingserviceApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Address",
+        "createOrEditLabel": "Maak of wijzig een Address",
+        "notFound": "No Addresses found"
+      },
+      "created": "A new Address is created with identifier {{ param }}",
+      "updated": "A Address is updated with identifier {{ param }}",
+      "deleted": "A Address is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Address {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "ID",
+      "streetAddress": "Street Address",
+      "city": "City",
+      "province": "Province",
+      "state": "State",
+      "zipCode": "Zip Code",
+      "country": "Country",
+      "cedent": "Cedent"
+    }
+  }
+}

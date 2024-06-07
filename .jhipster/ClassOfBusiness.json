@@ -1,0 +1,44 @@
+{
+  "annotations": {
+    "changelogDate": "20240607115808"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "250",
+      "fieldValidateRulesMinlength": "3"
+    }
+  ],
+  "name": "ClassOfBusiness",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "subClassOfBusiness",
+      "otherEntityRelationshipName": "classOfBusiness",
+      "relationshipName": "subClassOfBusinesses",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "contract",
+      "otherEntityRelationshipName": "classOfBusiness",
+      "relationshipName": "contracts",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "insuranceType",
+      "otherEntityRelationshipName": "classOfBusinesses",
+      "relationshipName": "insuranceType",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

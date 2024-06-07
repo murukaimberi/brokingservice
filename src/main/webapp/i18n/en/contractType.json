@@ -1,0 +1,9 @@
+{
+  "brokingserviceApp": {
+    "ContractType": {
+      "null": "",
+      "FACULTATIVE": "FACULTATIVE",
+      "TREATY": "TREATY"
+    }
+  }
+}

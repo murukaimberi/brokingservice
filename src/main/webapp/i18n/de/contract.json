@@ -1,0 +1,41 @@
+{
+  "brokingserviceApp": {
+    "contract": {
+      "home": {
+        "title": "Contracts",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Contract erstellen",
+        "createOrEditLabel": "Contract erstellen oder bearbeiten",
+        "notFound": "Keine Contracts gefunden"
+      },
+      "created": "Contract erstellt mit ID {{ param }}",
+      "updated": "Contract aktualisiert mit ID {{ param }}",
+      "deleted": "Contract gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Contract {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Contract"
+      },
+      "id": "ID",
+      "type": "Type",
+      "subType": "Sub Type",
+      "inception": "Inception",
+      "expiry": "Expiry",
+      "currency": "Currency",
+      "totalSumInsured": "Total Sum Insured",
+      "limitOfLiability": "Limit Of Liability",
+      "uuid": "Uuid",
+      "status": "Status",
+      "active": "Active",
+      "insured": "Insured",
+      "insurer": "Insurer",
+      "broker": "Broker",
+      "reinsurers": "Reinsurers",
+      "classOfBusiness": "Class Of Business",
+      "subClassOfBusiness": "Sub Class Of Business",
+      "country": "Country",
+      "reinsurancePlacement": "Reinsurance Placement"
+    }
+  }
+}

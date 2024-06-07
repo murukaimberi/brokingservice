@@ -1,0 +1,60 @@
+{
+  "annotations": {
+    "changelogDate": "20240607115816"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "riPercentageCommission",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "riPercentageShare",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "riTotalSumInsured",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "riLimitOfLiability",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "grossPremiumHundred",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "riPremium",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "riCommission",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "netDueFromInsurer",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "name": "ReinsurancePlacement",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "contract",
+      "relationshipName": "contract",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

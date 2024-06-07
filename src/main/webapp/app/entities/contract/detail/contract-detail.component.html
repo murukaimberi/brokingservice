@@ -1,0 +1,146 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (contract()) {
+      <div>
+        <h2 data-cy="contractDetailsHeading"><span jhiTranslate="brokingserviceApp.contract.detail.title">Contract</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ contract()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.type">Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'brokingserviceApp.ContractType.' + (contract()!.type ?? 'null')">{{
+              { null: '', FACULTATIVE: 'FACULTATIVE', TREATY: 'TREATY' }[contract()!.type ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.subType">Sub Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'brokingserviceApp.ContractSubType.' + (contract()!.subType ?? 'null')">{{
+              { null: '', PROPORTIONAL: 'PROPORTIONAL', NON_PROPORTIONAL: 'NON_PROPORTIONAL' }[contract()!.subType ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.inception">Inception</span></dt>
+          <dd>
+            <span>{{ contract()!.inception | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.expiry">Expiry</span></dt>
+          <dd>
+            <span>{{ contract()!.expiry | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.currency">Currency</span></dt>
+          <dd>
+            <span>{{ contract()!.currency }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.totalSumInsured">Total Sum Insured</span></dt>
+          <dd>
+            <span>{{ contract()!.totalSumInsured }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.limitOfLiability">Limit Of Liability</span></dt>
+          <dd>
+            <span>{{ contract()!.limitOfLiability }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.uuid">Uuid</span></dt>
+          <dd>
+            <span>{{ contract()!.uuid }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.status">Status</span></dt>
+          <dd>
+            <span [jhiTranslate]="'brokingserviceApp.ContractStatus.' + (contract()!.status ?? 'null')">{{
+              {
+                null: '',
+                CREATED: 'CREATED',
+                CREATED_PLACEMENT: 'CREATED_PLACEMENT',
+                CREATED_SHARE: 'CREATED_SHARE',
+                CREATED_SHARE_FINALISED: 'CREATED_SHARE_FINALISED',
+                CREATED_APPROVED: 'CREATED_APPROVED',
+                UPDATE_CREATED: 'UPDATE_CREATED',
+                UPDATE_APPROVED: 'UPDATE_APPROVED'
+              }[contract()!.status ?? 'null']
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.active">Active</span></dt>
+          <dd>
+            <span>{{ contract()!.active }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.insured">Insured</span></dt>
+          <dd>
+            @if (contract()!.insured) {
+              <div>
+                <a [routerLink]="['/business-partner', contract()!.insured?.id, 'view']">{{ contract()!.insured?.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.insurer">Insurer</span></dt>
+          <dd>
+            @if (contract()!.insurer) {
+              <div>
+                <a [routerLink]="['/business-partner', contract()!.insurer?.id, 'view']">{{ contract()!.insurer?.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.broker">Broker</span></dt>
+          <dd>
+            @if (contract()!.broker) {
+              <div>
+                <a [routerLink]="['/business-partner', contract()!.broker?.id, 'view']">{{ contract()!.broker?.name }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.reinsurers">Reinsurers</span></dt>
+          <dd>
+            @for (reinsurers of contract()!.reinsurers; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/business-partner', reinsurers.id, 'view']">{{ reinsurers?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.classOfBusiness">Class Of Business</span></dt>
+          <dd>
+            @if (contract()!.classOfBusiness) {
+              <div>
+                <a [routerLink]="['/class-of-business', contract()!.classOfBusiness?.id, 'view']">{{
+                  contract()!.classOfBusiness?.name
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.subClassOfBusiness">Sub Class Of Business</span></dt>
+          <dd>
+            @if (contract()!.subClassOfBusiness) {
+              <div>
+                <a [routerLink]="['/sub-class-of-business', contract()!.subClassOfBusiness?.id, 'view']">{{
+                  contract()!.subClassOfBusiness?.name
+                }}</a>
+              </div>
+            }
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contract.country">Country</span></dt>
+          <dd>
+            @if (contract()!.country) {
+              <div>
+                <a [routerLink]="['/country', contract()!.country?.id, 'view']">{{ contract()!.country?.currency }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/contract', contract()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>
