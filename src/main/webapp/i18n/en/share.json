@@ -1,0 +1,33 @@
+{
+  "brokingserviceApp": {
+    "share": {
+      "home": {
+        "title": "Shares",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Share",
+        "createOrEditLabel": "Create or edit a Share",
+        "notFound": "No Shares found"
+      },
+      "created": "A new Share is created with identifier {{ param }}",
+      "updated": "A Share is updated with identifier {{ param }}",
+      "deleted": "A Share is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Share {{ id }}?"
+      },
+      "detail": {
+        "title": "Share"
+      },
+      "id": "ID",
+      "sharePercentage": "Share Percentage",
+      "totalSumInsured": "Total Sum Insured",
+      "limitOfLiability": "Limit Of Liability",
+      "grossPremium": "Gross Premium",
+      "riCommission": "Ri Commission",
+      "netPremium": "Net Premium",
+      "brokerage": "Brokerage",
+      "brokerageAmount": "Brokerage Amount",
+      "netPayable": "Net Payable",
+      "reInsurer": "Re Insurer"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "brokingserviceApp": {
+    "classOfBusiness": {
+      "home": {
+        "title": "Class Of Businesses",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Class Of Business erstellen",
+        "createOrEditLabel": "Class Of Business erstellen oder bearbeiten",
+        "notFound": "Keine Class Of Businesses gefunden"
+      },
+      "created": "Class Of Business erstellt mit ID {{ param }}",
+      "updated": "Class Of Business aktualisiert mit ID {{ param }}",
+      "deleted": "Class Of Business gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Class Of Business {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Class Of Business"
+      },
+      "id": "ID",
+      "name": "Name",
+      "subClassOfBusinesses": "Sub Class Of Businesses",
+      "contracts": "Contracts",
+      "insuranceType": "Insurance Type"
+    }
+  }
+}

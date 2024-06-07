@@ -17,7 +17,26 @@
     <property name="datetimeType" value="datetime" dbms="postgresql"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115806_added_entity_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115807_added_entity_InsuranceType.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115808_added_entity_ClassOfBusiness.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115809_added_entity_SubClassOfBusiness.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115810_added_entity_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115811_added_entity_ContractReport.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115812_added_entity_Notification.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115813_added_entity_ContractHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115814_added_entity_BusinessPartner.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115815_added_entity_Share.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115816_added_entity_ReinsurancePlacement.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115817_added_entity_Country.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20240607115806_added_entity_constraints_Address.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115808_added_entity_constraints_ClassOfBusiness.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115809_added_entity_constraints_SubClassOfBusiness.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115810_added_entity_constraints_Contract.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115813_added_entity_constraints_ContractHistory.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115815_added_entity_constraints_Share.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20240607115816_added_entity_constraints_ReinsurancePlacement.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
     <!-- jhipster-needle-liquibase-add-incremental-changelog - JHipster will add incremental liquibase changelogs here -->
 </databaseChangeLog>

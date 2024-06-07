@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (contractHistory()) {
+      <div>
+        <h2 data-cy="contractHistoryDetailsHeading">
+          <span jhiTranslate="brokingserviceApp.contractHistory.detail.title">Contract History</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.contractCreatedDate">Contract Created Date</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.contractCreatedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.contractActiveDate">Contract Active Date</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.contractActiveDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.contractInActiveDate">Contract In Active Date</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.contractInActiveDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.contractLastModifiedDate">Contract Last Modified Date</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.contractLastModifiedDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.changeDescription">Change Description</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.changeDescription }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.updated">Updated</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.updated?.login }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.contractHistory.approved">Approved</span></dt>
+          <dd>
+            <span>{{ contractHistory()!.approved?.login }}</span>
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/contract-history', contractHistory()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "brokingserviceApp": {
+    "notification": {
+      "home": {
+        "title": "Notifications",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Notification",
+        "createOrEditLabel": "Maak of wijzig een Notification",
+        "notFound": "No Notifications found"
+      },
+      "created": "A new Notification is created with identifier {{ param }}",
+      "updated": "A Notification is updated with identifier {{ param }}",
+      "deleted": "A Notification is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Notification {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Notification"
+      },
+      "id": "ID",
+      "message": "Message",
+      "notificationDate": "Notification Date",
+      "dueDate": "Due Date",
+      "notificationStatus": "Notification Status"
+    }
+  }
+}

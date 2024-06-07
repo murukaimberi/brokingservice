@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Contract.
+    -->
+    <changeSet id="20240607115810-1" author="jhipster">
+        <createTable tableName="contract">
+            <column name="id" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="sub_type" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="inception" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="expiry" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="currency" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="total_sum_insured" type="decimal(21,2)">
+                <constraints nullable="false" />
+            </column>
+            <column name="limit_of_liability" type="decimal(21,2)">
+                <constraints nullable="false" />
+            </column>
+            <column name="uuid" type="${uuidType}">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_contract__uuid" />
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="active" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="insured_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="insurer_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="broker_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="class_of_business_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="sub_class_of_business_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="country_id" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="contract" columnName="inception" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="contract" columnName="expiry" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <changeSet id="20240607115810-1-relations" author="jhipster">
+
+        <createTable tableName="rel_contract__reinsurers">
+            <column name="reinsurers_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="contract_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="contract_id, reinsurers_id" tableName="rel_contract__reinsurers"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+    <changeSet id="20240607115810-1-data" author="jhipster" context="faker">
+        <loadData
+                  file="config/liquibase/fake-data/contract.csv"
+                  separator=";"
+                  tableName="contract"
+                  usePreparedStatements="true">
+            <column name="id" type="numeric"/>
+            <column name="type" type="string"/>
+            <column name="sub_type" type="string"/>
+            <column name="inception" type="date"/>
+            <column name="expiry" type="date"/>
+            <column name="currency" type="string"/>
+            <column name="total_sum_insured" type="numeric"/>
+            <column name="limit_of_liability" type="numeric"/>
+            <column name="uuid" type="${uuidType}"/>
+            <column name="status" type="string"/>
+            <column name="active" type="boolean"/>
+            <column name="insured_id" type="numeric"/>
+            <column name="insurer_id" type="numeric"/>
+            <column name="broker_id" type="numeric"/>
+            <column name="class_of_business_id" type="numeric"/>
+            <column name="sub_class_of_business_id" type="numeric"/>
+            <column name="country_id" type="numeric"/>
+            <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
+        </loadData>
+    </changeSet>
+</databaseChangeLog>

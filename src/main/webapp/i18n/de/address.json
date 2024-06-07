@@ -1,0 +1,30 @@
+{
+  "brokingserviceApp": {
+    "address": {
+      "home": {
+        "title": "Addresses",
+        "refreshListLabel": "Liste aktualisieren",
+        "createLabel": "Address erstellen",
+        "createOrEditLabel": "Address erstellen oder bearbeiten",
+        "notFound": "Keine Addresses gefunden"
+      },
+      "created": "Address erstellt mit ID {{ param }}",
+      "updated": "Address aktualisiert mit ID {{ param }}",
+      "deleted": "Address gelöscht mit ID {{ param }}",
+      "delete": {
+        "question": "Soll Address {{ id }} wirklich dauerhaft gelöscht werden?"
+      },
+      "detail": {
+        "title": "Address"
+      },
+      "id": "ID",
+      "streetAddress": "Street Address",
+      "city": "City",
+      "province": "Province",
+      "state": "State",
+      "zipCode": "Zip Code",
+      "country": "Country",
+      "cedent": "Cedent"
+    }
+  }
+}

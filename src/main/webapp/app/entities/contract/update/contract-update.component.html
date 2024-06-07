@@ -1,0 +1,417 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-contract-heading" data-cy="ContractCreateUpdateHeading" jhiTranslate="brokingserviceApp.contract.home.createOrEditLabel">
+        Create or edit a Contract
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="brokingserviceApp.contract.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_type" jhiTranslate="brokingserviceApp.contract.type">Type</label>
+          <select class="form-control" name="type" formControlName="type" id="field_type" data-cy="type">
+            <option [ngValue]="null">{{ 'brokingserviceApp.ContractType.null' | translate }}</option>
+            @for (contractType of contractTypeValues; track $index) {
+              <option [value]="contractType">{{ 'brokingserviceApp.ContractType.' + contractType | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('type')!.invalid && (editForm.get('type')!.dirty || editForm.get('type')!.touched)) {
+            <div>
+              @if (editForm.get('type')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subType" jhiTranslate="brokingserviceApp.contract.subType">Sub Type</label>
+          <select class="form-control" name="subType" formControlName="subType" id="field_subType" data-cy="subType">
+            <option [ngValue]="null">{{ 'brokingserviceApp.ContractSubType.null' | translate }}</option>
+            @for (contractSubType of contractSubTypeValues; track $index) {
+              <option [value]="contractSubType">{{ 'brokingserviceApp.ContractSubType.' + contractSubType | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('subType')!.invalid && (editForm.get('subType')!.dirty || editForm.get('subType')!.touched)) {
+            <div>
+              @if (editForm.get('subType')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_inception" jhiTranslate="brokingserviceApp.contract.inception">Inception</label>
+          <div class="d-flex">
+            <input
+              id="field_inception"
+              data-cy="inception"
+              type="datetime-local"
+              class="form-control"
+              name="inception"
+              formControlName="inception"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('inception')!.invalid && (editForm.get('inception')!.dirty || editForm.get('inception')!.touched)) {
+            <div>
+              @if (editForm.get('inception')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('inception')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_expiry" jhiTranslate="brokingserviceApp.contract.expiry">Expiry</label>
+          <div class="d-flex">
+            <input
+              id="field_expiry"
+              data-cy="expiry"
+              type="datetime-local"
+              class="form-control"
+              name="expiry"
+              formControlName="expiry"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          @if (editForm.get('expiry')!.invalid && (editForm.get('expiry')!.dirty || editForm.get('expiry')!.touched)) {
+            <div>
+              @if (editForm.get('expiry')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('expiry')?.errors?.datetimelocal"
+                jhiTranslate="entity.validation.datetimelocal"
+                >This field should be a date and time.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_currency" jhiTranslate="brokingserviceApp.contract.currency">Currency</label>
+          <input type="text" class="form-control" name="currency" id="field_currency" data-cy="currency" formControlName="currency" />
+          @if (editForm.get('currency')!.invalid && (editForm.get('currency')!.dirty || editForm.get('currency')!.touched)) {
+            <div>
+              @if (editForm.get('currency')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_totalSumInsured" jhiTranslate="brokingserviceApp.contract.totalSumInsured"
+            >Total Sum Insured</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalSumInsured"
+            id="field_totalSumInsured"
+            data-cy="totalSumInsured"
+            formControlName="totalSumInsured"
+          />
+          @if (
+            editForm.get('totalSumInsured')!.invalid && (editForm.get('totalSumInsured')!.dirty || editForm.get('totalSumInsured')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('totalSumInsured')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('totalSumInsured')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_limitOfLiability" jhiTranslate="brokingserviceApp.contract.limitOfLiability"
+            >Limit Of Liability</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="limitOfLiability"
+            id="field_limitOfLiability"
+            data-cy="limitOfLiability"
+            formControlName="limitOfLiability"
+          />
+          @if (
+            editForm.get('limitOfLiability')!.invalid &&
+            (editForm.get('limitOfLiability')!.dirty || editForm.get('limitOfLiability')!.touched)
+          ) {
+            <div>
+              @if (editForm.get('limitOfLiability')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+              <small
+                class="form-text text-danger"
+                [hidden]="!editForm.get('limitOfLiability')?.errors?.number"
+                jhiTranslate="entity.validation.number"
+                >This field should be a number.</small
+              >
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_uuid" jhiTranslate="brokingserviceApp.contract.uuid">Uuid</label>
+          <input type="text" class="form-control" name="uuid" id="field_uuid" data-cy="uuid" formControlName="uuid" />
+          @if (editForm.get('uuid')!.invalid && (editForm.get('uuid')!.dirty || editForm.get('uuid')!.touched)) {
+            <div></div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="brokingserviceApp.contract.status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'brokingserviceApp.ContractStatus.null' | translate }}</option>
+            @for (contractStatus of contractStatusValues; track $index) {
+              <option [value]="contractStatus">{{ 'brokingserviceApp.ContractStatus.' + contractStatus | translate }}</option>
+            }
+          </select>
+          @if (editForm.get('status')!.invalid && (editForm.get('status')!.dirty || editForm.get('status')!.touched)) {
+            <div>
+              @if (editForm.get('status')?.errors?.required) {
+                <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+              }
+            </div>
+          }
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_active" jhiTranslate="brokingserviceApp.contract.active">Active</label>
+          <input type="checkbox" class="form-check" name="active" id="field_active" data-cy="active" formControlName="active" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_insured" jhiTranslate="brokingserviceApp.contract.insured">Insured</label>
+          <select
+            class="form-control"
+            id="field_insured"
+            data-cy="insured"
+            name="insured"
+            formControlName="insured"
+            [compareWith]="compareBusinessPartner"
+          >
+            @if (editForm.get(['insured'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (businessPartnerOption of businessPartnersSharedCollection; track $index) {
+              <option [ngValue]="businessPartnerOption">{{ businessPartnerOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['insured'])!.invalid && (editForm.get(['insured'])!.dirty || editForm.get(['insured'])!.touched)) {
+          <div>
+            @if (editForm.get(['insured'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_insurer" jhiTranslate="brokingserviceApp.contract.insurer">Insurer</label>
+          <select
+            class="form-control"
+            id="field_insurer"
+            data-cy="insurer"
+            name="insurer"
+            formControlName="insurer"
+            [compareWith]="compareBusinessPartner"
+          >
+            @if (editForm.get(['insurer'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (businessPartnerOption of businessPartnersSharedCollection; track $index) {
+              <option [ngValue]="businessPartnerOption">{{ businessPartnerOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['insurer'])!.invalid && (editForm.get(['insurer'])!.dirty || editForm.get(['insurer'])!.touched)) {
+          <div>
+            @if (editForm.get(['insurer'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_broker" jhiTranslate="brokingserviceApp.contract.broker">Broker</label>
+          <select
+            class="form-control"
+            id="field_broker"
+            data-cy="broker"
+            name="broker"
+            formControlName="broker"
+            [compareWith]="compareBusinessPartner"
+          >
+            @if (editForm.get(['broker'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (businessPartnerOption of businessPartnersSharedCollection; track $index) {
+              <option [ngValue]="businessPartnerOption">{{ businessPartnerOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['broker'])!.invalid && (editForm.get(['broker'])!.dirty || editForm.get(['broker'])!.touched)) {
+          <div>
+            @if (editForm.get(['broker'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label for="field_reinsurers" jhiTranslate="brokingserviceApp.contract.reinsurers">Reinsurers</label>
+          <select
+            class="form-control"
+            id="field_reinsurers"
+            data-cy="reinsurers"
+            multiple
+            name="reinsurers"
+            formControlName="reinsurers"
+            [compareWith]="compareBusinessPartner"
+          >
+            @for (businessPartnerOption of businessPartnersSharedCollection; track $index) {
+              <option [ngValue]="businessPartnerOption">{{ businessPartnerOption.id }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['reinsurers'])!.invalid && (editForm.get(['reinsurers'])!.dirty || editForm.get(['reinsurers'])!.touched)) {
+          <div>
+            @if (editForm.get(['reinsurers'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_classOfBusiness" jhiTranslate="brokingserviceApp.contract.classOfBusiness"
+            >Class Of Business</label
+          >
+          <select
+            class="form-control"
+            id="field_classOfBusiness"
+            data-cy="classOfBusiness"
+            name="classOfBusiness"
+            formControlName="classOfBusiness"
+            [compareWith]="compareClassOfBusiness"
+          >
+            @if (editForm.get(['classOfBusiness'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (classOfBusinessOption of classOfBusinessesSharedCollection; track $index) {
+              <option [ngValue]="classOfBusinessOption">{{ classOfBusinessOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['classOfBusiness'])!.invalid &&
+          (editForm.get(['classOfBusiness'])!.dirty || editForm.get(['classOfBusiness'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['classOfBusiness'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_subClassOfBusiness" jhiTranslate="brokingserviceApp.contract.subClassOfBusiness"
+            >Sub Class Of Business</label
+          >
+          <select
+            class="form-control"
+            id="field_subClassOfBusiness"
+            data-cy="subClassOfBusiness"
+            name="subClassOfBusiness"
+            formControlName="subClassOfBusiness"
+            [compareWith]="compareSubClassOfBusiness"
+          >
+            @if (editForm.get(['subClassOfBusiness'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (subClassOfBusinessOption of subClassOfBusinessesSharedCollection; track $index) {
+              <option [ngValue]="subClassOfBusinessOption">{{ subClassOfBusinessOption.name }}</option>
+            }
+          </select>
+        </div>
+        @if (
+          editForm.get(['subClassOfBusiness'])!.invalid &&
+          (editForm.get(['subClassOfBusiness'])!.dirty || editForm.get(['subClassOfBusiness'])!.touched)
+        ) {
+          <div>
+            @if (editForm.get(['subClassOfBusiness'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_country" jhiTranslate="brokingserviceApp.contract.country">Country</label>
+          <select
+            class="form-control"
+            id="field_country"
+            data-cy="country"
+            name="country"
+            formControlName="country"
+            [compareWith]="compareCountry"
+          >
+            @if (editForm.get(['country'])!.value == null) {
+              <option [ngValue]="null" selected></option>
+            }
+            @for (countryOption of countriesSharedCollection; track $index) {
+              <option [ngValue]="countryOption">{{ countryOption.currency }}</option>
+            }
+          </select>
+        </div>
+        @if (editForm.get(['country'])!.invalid && (editForm.get(['country'])!.dirty || editForm.get(['country'])!.touched)) {
+          <div>
+            @if (editForm.get(['country'])?.errors?.required) {
+              <small class="form-text text-danger" jhiTranslate="entity.validation.required">This field is required.</small>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

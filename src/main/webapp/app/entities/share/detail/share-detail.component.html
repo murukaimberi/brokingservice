@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (share()) {
+      <div>
+        <h2 data-cy="shareDetailsHeading"><span jhiTranslate="brokingserviceApp.share.detail.title">Share</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ share()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.sharePercentage">Share Percentage</span></dt>
+          <dd>
+            <span>{{ share()!.sharePercentage }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.totalSumInsured">Total Sum Insured</span></dt>
+          <dd>
+            <span>{{ share()!.totalSumInsured }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.limitOfLiability">Limit Of Liability</span></dt>
+          <dd>
+            <span>{{ share()!.limitOfLiability }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.grossPremium">Gross Premium</span></dt>
+          <dd>
+            <span>{{ share()!.grossPremium }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.riCommission">Ri Commission</span></dt>
+          <dd>
+            <span>{{ share()!.riCommission }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.netPremium">Net Premium</span></dt>
+          <dd>
+            <span>{{ share()!.netPremium }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.brokerage">Brokerage</span></dt>
+          <dd>
+            <span>{{ share()!.brokerage }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.brokerageAmount">Brokerage Amount</span></dt>
+          <dd>
+            <span>{{ share()!.brokerageAmount }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.netPayable">Net Payable</span></dt>
+          <dd>
+            <span>{{ share()!.netPayable }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.share.reInsurer">Re Insurer</span></dt>
+          <dd>
+            @if (share()!.reInsurer) {
+              <div>
+                <a [routerLink]="['/business-partner', share()!.reInsurer?.id, 'view']">{{ share()!.reInsurer?.name }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/share', share()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (classOfBusiness()) {
+      <div>
+        <h2 data-cy="classOfBusinessDetailsHeading">
+          <span jhiTranslate="brokingserviceApp.classOfBusiness.detail.title">Class Of Business</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ classOfBusiness()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.classOfBusiness.name">Name</span></dt>
+          <dd>
+            <span>{{ classOfBusiness()!.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.classOfBusiness.insuranceType">Insurance Type</span></dt>
+          <dd>
+            @if (classOfBusiness()!.insuranceType) {
+              <div>
+                <a [routerLink]="['/insurance-type', classOfBusiness()!.insuranceType?.id, 'view']">{{
+                  classOfBusiness()!.insuranceType?.name
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/class-of-business', classOfBusiness()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

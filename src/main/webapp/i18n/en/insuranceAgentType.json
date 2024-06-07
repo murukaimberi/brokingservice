@@ -1,0 +1,11 @@
+{
+  "brokingserviceApp": {
+    "InsuranceAgentType": {
+      "null": "",
+      "INSURED": "INSURED",
+      "BROKER": "BROKER",
+      "INSURER": "INSURER",
+      "RE_INSURER": "RE_INSURER"
+    }
+  }
+}

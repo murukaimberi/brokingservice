@@ -1,0 +1,28 @@
+{
+  "annotations": {
+    "changelogDate": "20240607115807"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "name",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "minlength", "maxlength"],
+      "fieldValidateRulesMaxlength": "150",
+      "fieldValidateRulesMinlength": "3"
+    }
+  ],
+  "name": "InsuranceType",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "classOfBusiness",
+      "otherEntityRelationshipName": "insuranceType",
+      "relationshipName": "classOfBusinesses",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

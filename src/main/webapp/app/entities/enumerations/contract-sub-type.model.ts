@@ -1,0 +1,5 @@
+export enum ContractSubType {
+  PROPORTIONAL = 'PROPORTIONAL',
+
+  NON_PROPORTIONAL = 'NON_PROPORTIONAL',
+}

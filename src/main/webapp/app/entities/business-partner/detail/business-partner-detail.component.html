@@ -1,0 +1,69 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (businessPartner()) {
+      <div>
+        <h2 data-cy="businessPartnerDetailsHeading">
+          <span jhiTranslate="brokingserviceApp.businessPartner.detail.title">Business Partner</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ businessPartner()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.name">Name</span></dt>
+          <dd>
+            <span>{{ businessPartner()!.name }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.description">Description</span></dt>
+          <dd>
+            <span>{{ businessPartner()!.description }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.representativeName">Representative Name</span></dt>
+          <dd>
+            <span>{{ businessPartner()!.representativeName }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.email">Email</span></dt>
+          <dd>
+            <span>{{ businessPartner()!.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.phoneNumber">Phone Number</span></dt>
+          <dd>
+            <span>{{ businessPartner()!.phoneNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.agentType">Agent Type</span></dt>
+          <dd>
+            <span [jhiTranslate]="'brokingserviceApp.InsuranceAgentType.' + (businessPartner()!.agentType ?? 'null')">{{
+              { null: '', INSURED: 'INSURED', BROKER: 'BROKER', INSURER: 'INSURER', RE_INSURER: 'RE_INSURER' }[
+                businessPartner()!.agentType ?? 'null'
+              ]
+            }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.businessPartner.reInsurerContracts">Re Insurer Contracts</span></dt>
+          <dd>
+            @for (reInsurerContracts of businessPartner()!.reInsurerContracts; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/contract', reInsurerContracts.id, 'view']">{{ reInsurerContracts?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/business-partner', businessPartner()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

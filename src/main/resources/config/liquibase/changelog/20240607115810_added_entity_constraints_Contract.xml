@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Contract.
+    -->
+    <changeSet id="20240607115810-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="insured_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract__insured_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_partner"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="insurer_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract__insurer_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_partner"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="broker_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract__broker_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_partner"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="contract_id"
+                                 baseTableName="rel_contract__reinsurers"
+                                 constraintName="fk_rel_contract__reinsurers__contract_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="contract"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="reinsurers_id"
+                                 baseTableName="rel_contract__reinsurers"
+                                 constraintName="fk_rel_contract__reinsurers__reinsurers_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="business_partner"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="class_of_business_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract__class_of_business_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="class_of_business"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="sub_class_of_business_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract__sub_class_of_business_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sub_class_of_business"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="contract"
+                                 constraintName="fk_contract__country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"
+                                 />
+    </changeSet>
+</databaseChangeLog>

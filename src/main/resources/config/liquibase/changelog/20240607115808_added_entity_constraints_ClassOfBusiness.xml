@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity ClassOfBusiness.
+    -->
+    <changeSet id="20240607115808-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="insurance_type_id"
+                                 baseTableName="class_of_business"
+                                 constraintName="fk_class_of_business__insurance_type_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="insurance_type"
+                                 />
+    </changeSet>
+</databaseChangeLog>

@@ -8,7 +8,18 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "address": "Address",
+        "insuranceType": "Insurance Type",
+        "classOfBusiness": "Class Of Business",
+        "subClassOfBusiness": "Sub Class Of Business",
+        "contract": "Contract",
+        "contractReport": "Contract Report",
+        "notification": "Notification",
+        "contractHistory": "Contract History",
+        "businessPartner": "Business Partner",
+        "share": "Share",
+        "reinsurancePlacement": "Reinsurance Placement",
+        "country": "Country"
       },
       "account": {
         "main": "Account",

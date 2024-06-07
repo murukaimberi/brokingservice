@@ -1,0 +1,65 @@
+{
+  "annotations": {
+    "changelogDate": "20240607115815"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "sharePercentage",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "totalSumInsured",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "limitOfLiability",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "grossPremium",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "riCommission",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "netPremium",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "brokerage",
+      "fieldType": "BigDecimal",
+      "fieldValidateRules": ["required", "min", "max"],
+      "fieldValidateRulesMax": "100",
+      "fieldValidateRulesMin": "0"
+    },
+    {
+      "fieldName": "brokerageAmount",
+      "fieldType": "BigDecimal"
+    },
+    {
+      "fieldName": "netPayable",
+      "fieldType": "BigDecimal"
+    }
+  ],
+  "name": "Share",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityField": "name",
+      "otherEntityName": "businessPartner",
+      "otherEntityRelationshipName": "awardedBusinessShares",
+      "relationshipName": "reInsurer",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one",
+      "relationshipValidateRules": "required"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceClass"
+}

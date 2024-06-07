@@ -1,0 +1,182 @@
+<div>
+  <h2 id="page-heading" data-cy="ShareHeading">
+    <span jhiTranslate="brokingserviceApp.share.home.title">Shares</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="brokingserviceApp.share.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-share"
+        [routerLink]="['/share/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="brokingserviceApp.share.home.createLabel">Create a new Share</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (shares?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="brokingserviceApp.share.home.notFound">No Shares found</span>
+    </div>
+  }
+
+  @if (shares && shares.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sharePercentage">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.sharePercentage">Share Percentage</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="totalSumInsured">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.totalSumInsured">Total Sum Insured</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="limitOfLiability">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.limitOfLiability">Limit Of Liability</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="grossPremium">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.grossPremium">Gross Premium</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="riCommission">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.riCommission">Ri Commission</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="netPremium">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.netPremium">Net Premium</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="brokerage">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.brokerage">Brokerage</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="brokerageAmount">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.brokerageAmount">Brokerage Amount</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="netPayable">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.netPayable">Net Payable</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="reInsurer.name">
+              <div class="d-flex">
+                <span jhiTranslate="brokingserviceApp.share.reInsurer">Re Insurer</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (share of shares; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/share', share.id, 'view']">{{ share.id }}</a>
+              </td>
+              <td>{{ share.sharePercentage }}</td>
+              <td>{{ share.totalSumInsured }}</td>
+              <td>{{ share.limitOfLiability }}</td>
+              <td>{{ share.grossPremium }}</td>
+              <td>{{ share.riCommission }}</td>
+              <td>{{ share.netPremium }}</td>
+              <td>{{ share.brokerage }}</td>
+              <td>{{ share.brokerageAmount }}</td>
+              <td>{{ share.netPayable }}</td>
+              <td>
+                @if (share.reInsurer) {
+                  <div>
+                    <a [routerLink]="['/business-partner', share.reInsurer.id, 'view']">{{ share.reInsurer.name }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/share', share.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/share', share.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(share)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+  @if (shares && shares.length > 0) {
+    <div>
+      <div class="d-flex justify-content-center">
+        <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+      </div>
+
+      <div class="d-flex justify-content-center">
+        <ngb-pagination
+          [collectionSize]="totalItems"
+          [page]="page"
+          [pageSize]="itemsPerPage"
+          [maxSize]="5"
+          [rotate]="true"
+          [boundaryLinks]="true"
+          (pageChange)="navigateToPage($event)"
+        ></ngb-pagination>
+      </div>
+    </div>
+  }
+</div>

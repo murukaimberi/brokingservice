@@ -50,6 +50,30 @@ public class CacheConfiguration {
             createCache(cm, za.co.afrikatek.brokingservice.domain.User.class.getName());
             createCache(cm, za.co.afrikatek.brokingservice.domain.Authority.class.getName());
             createCache(cm, za.co.afrikatek.brokingservice.domain.User.class.getName() + ".authorities");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Address.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.InsuranceType.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.InsuranceType.class.getName() + ".classOfBusinesses");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.ClassOfBusiness.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.ClassOfBusiness.class.getName() + ".subClassOfBusinesses");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.ClassOfBusiness.class.getName() + ".contracts");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.SubClassOfBusiness.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.SubClassOfBusiness.class.getName() + ".contracts");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Contract.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Contract.class.getName() + ".reinsurers");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.ContractReport.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Notification.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.ContractHistory.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName() + ".awardedBusinessShares");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName() + ".addresses");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName() + ".insuredContracts");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName() + ".insurerContracts");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName() + ".brokerContracts");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.BusinessPartner.class.getName() + ".reInsurerContracts");
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Share.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.ReinsurancePlacement.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Country.class.getName());
+            createCache(cm, za.co.afrikatek.brokingservice.domain.Country.class.getName() + ".contracts");
             // jhipster-needle-ehcache-add-entry
         };
     }

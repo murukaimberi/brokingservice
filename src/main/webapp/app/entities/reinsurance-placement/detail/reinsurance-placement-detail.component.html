@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (reinsurancePlacement()) {
+      <div>
+        <h2 data-cy="reinsurancePlacementDetailsHeading">
+          <span jhiTranslate="brokingserviceApp.reinsurancePlacement.detail.title">Reinsurance Placement</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.riPercentageCommission">Ri Percentage Commission</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.riPercentageCommission }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.riPercentageShare">Ri Percentage Share</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.riPercentageShare }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.riTotalSumInsured">Ri Total Sum Insured</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.riTotalSumInsured }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.riLimitOfLiability">Ri Limit Of Liability</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.riLimitOfLiability }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.grossPremiumHundred">Gross Premium Hundred</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.grossPremiumHundred }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.riPremium">Ri Premium</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.riPremium }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.riCommission">Ri Commission</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.riCommission }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.netDueFromInsurer">Net Due From Insurer</span></dt>
+          <dd>
+            <span>{{ reinsurancePlacement()!.netDueFromInsurer }}</span>
+          </dd>
+          <dt><span jhiTranslate="brokingserviceApp.reinsurancePlacement.contract">Contract</span></dt>
+          <dd>
+            @if (reinsurancePlacement()!.contract) {
+              <div>
+                <a [routerLink]="['/contract', reinsurancePlacement()!.contract?.id, 'view']">{{ reinsurancePlacement()!.contract?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/reinsurance-placement', reinsurancePlacement()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

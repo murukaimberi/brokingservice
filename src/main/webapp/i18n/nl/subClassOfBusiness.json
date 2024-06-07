@@ -1,0 +1,26 @@
+{
+  "brokingserviceApp": {
+    "subClassOfBusiness": {
+      "home": {
+        "title": "Sub Class Of Businesses",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Maak een nieuwe Sub Class Of Business",
+        "createOrEditLabel": "Maak of wijzig een Sub Class Of Business",
+        "notFound": "No Sub Class Of Businesses found"
+      },
+      "created": "A new Sub Class Of Business is created with identifier {{ param }}",
+      "updated": "A Sub Class Of Business is updated with identifier {{ param }}",
+      "deleted": "A Sub Class Of Business is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Bent u zeker dat u Sub Class Of Business {{ id }} wilt verwijderen?"
+      },
+      "detail": {
+        "title": "Sub Class Of Business"
+      },
+      "id": "ID",
+      "name": "Name",
+      "contracts": "Contracts",
+      "classOfBusiness": "Class Of Business"
+    }
+  }
+}
