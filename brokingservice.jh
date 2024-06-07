@@ -1,0 +1,147 @@
+entity Address {
+    streetAddress TextBlob required
+    city String required minlength(3) maxlength(150)
+    province String required
+    state String
+    zipCode String required
+    country String required
+}
+
+entity InsuranceType {
+    name String required minlength(3) maxlength(150)
+}
+
+entity ClassOfBusiness {
+    name String minlength(3) maxlength(250)
+}
+
+entity SubClassOfBusiness {
+    name String minlength(3) maxlength(250)
+}
+
+entity Contract {
+    type ContractType required
+    subType ContractSubType required
+    inception LocalDate required
+    expiry LocalDate required
+    currency String required
+    totalSumInsured BigDecimal required
+    limitOfLiability BigDecimal required
+    uuid UUID unique
+    status ContractStatus required
+    active Boolean 
+}
+
+entity Notification {
+	message String required
+    notificationDate LocalDateTime required
+    dueDate LocalDateTime required
+	notification Status required
+}
+
+entity ContractHistory {
+    contractCreatedDate LocalDateTime required
+    contractActiveDate LocalDateTime required
+    contractiInActiveDate LocalDateTime
+    contractLastModifiedDate LocalDateTime
+    changeDescription TextBlob required
+}
+
+entity BusinessPartner {
+    name String required minlength(3) maxlength(150)
+    description TextBlob required
+    representativeName String required minlength(3) maxlength(150)
+    email String required minlength(3) maxlength(100)
+    phoneNumber String required
+    agentType InsuranceAgentType required
+}
+
+entity Share {
+    sharePercentage BigDecimal required min(0) max(100)
+    totalSumInsured BigDecimal
+    limitOfLiability BigDecimal
+    grossPremium BigDecimal
+    riCommission BigDecimal
+    netPremium BigDecimal
+    brokerage BigDecimal required min(0) max(100)
+    brokerageAmount BigDecimal
+    netPayable BigDecimal
+}
+
+entity ReinsurancePlacement {
+    riPercentageCommission BigDecimal required min(0) max(100)
+    riPercentageShare BigDecimal required min(0) max(100)
+    riTotalSumInsured BigDecimal
+    riLimitOfLiability BigDecimal
+    grossPremiumHundred BigDecimal required
+    riPremium BigDecimal
+    riCommission BigDecimal
+    netDueFromInsurer BigDecimal
+}
+
+entity Country {
+    name String required,
+    currency String required,
+    currencyCode String required
+}
+
+enum ContractStatus {
+    CREATED,
+    CREATED_PLACEMENT,
+    CREATED_SHARE,
+    CREATED_SHARE_FINALISED,
+    CREATED_APPROVED,
+    UPDATE_CREATED,
+    UPDATE_APPROVED
+}
+
+enum ContractType {
+    FACULTATIVE,
+    TREATY
+}
+enum ContractSubType {
+    PROPORTIONAL,
+    NON_PROPORTIONAL
+}
+enum InsuranceAgentType {
+    INSURED,
+    BROKER,
+    INSURER,
+    RE_INSURER
+}
+
+enum NotificationStatus {
+	TODO,
+    IN_PROGRESS,
+    DONE
+}
+
+relationship OneToOne {
+    ReinsurancePlacement{contract required} to Contract
+}
+
+relationship OneToMany {
+    InsuranceType{classOfBusinesses} to ClassOfBusiness{insuranceType(name) required}
+    ClassOfBusiness{subClassOfBusinesses} to SubClassOfBusiness{classOfBusiness(name) required}
+    BusinessPartner{awardedBusinessShares} to Share{reInsurer(name) required}
+    ClassOfBusiness{contracts} to Contract{classOfBusiness(name) required}
+    SubClassOfBusiness{contracts} to Contract{subClassOfBusiness(name) required}
+    Country to Contract{country(currency) required}
+}
+
+relationship ManyToOne {
+    Address{cedent(name)} to BusinessPartner{addresses(city)}
+    Contract{insured(name) required} to BusinessPartner{insuredContracts}
+    Contract{insurer(name) required} to BusinessPartner{insurerContracts}
+    Contract{broker(name) required} to BusinessPartner{brokerContracts}
+    ContractHistory{updated(login) required} to User with builtInEntity
+    ContractHistory{approved(login)} to User with builtInEntity
+}
+
+relationship ManyToMany {
+    Contract{reinsurers required} to BusinessPartner{reInsurerContracts}
+}
+
+paginate * with pagination
+service * with serviceClass
+
